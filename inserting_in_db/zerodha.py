@@ -8,7 +8,7 @@ import pandas as pd
 
 def add_to_db():
     # downloading zip file
-    r = requests.get('http://www.bseindia.com/download/BhavCopy/Equity/EQ250118_CSV.ZIP')
+    r = requests.get('http://www.bseindia.com/download/BhavCopy/Equity/EQ290118_CSV.ZIP')
     with open('zero.zip', 'wb') as f:
         for chunk in r.iter_content(chunk_size=100):
             if chunk:
@@ -24,7 +24,7 @@ def add_to_db():
 
     # here stock_data is the database name
     admin = client.collect.stock_data
-    data = pd.read_csv(c_dir+'\EQ250118.csv')
+    data = pd.read_csv(c_dir+'\EQ290118.csv')
     data_json = json.loads(data.to_json(orient='records'))
     admin.remove()
     admin.insert(data_json)
