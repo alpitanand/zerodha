@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--code, name, open, high, low, close-->
+<html lang="en">
+<head>
+    <title>My Webpage</title>
+    <style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+</head>
+<body>
+
+<form action="/search" method="post">
+  <input type="text" name="sc_name" value="SC_CODE" />
+  <input type="submit" />
+</form>
+
+ {% block content %}
+<table style="width:100%">
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Close</th>
+
+    </tr>
+    {% for item in data %}
+    <tr>
+        <td>{{item['SC_CODE']}}</td>
+        <td>{{item['SC_NAME']}}</td>
+        <td>{{item['OPEN']}}</td>
+        <td>{{item['HIGH']}}</td>
+        <td>{{item['LOW']}}</td>
+        <td>{{item['CLOSE']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+</body>
+</html>
